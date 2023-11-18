@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Main.unity
+    guid: 93f910fd5b2280545a80c42dda2d4f83
+  - enabled: 0
+    path: Assets/Scenes/recorder.unity
+    guid: 18f499b7ce02a684f859ff1b5f695f3e
+  - enabled: 0
+    path: Assets/Samples/Scanning/Scenes/Recording.unity
+    guid: a8b815c6414994643b8e7a33e5b2ccf2
+  - enabled: 0
+    path: Assets/Scenes/Rainbow.unity
+    guid: cfe990966187373439b94789c610fea1
+  - enabled: 0
+    path: Assets/Scenes/Rainbow2.unity
+    guid: 03c425a08d3fd3746b1f1d69827b2c21
+  - enabled: 0
+    path: Assets/Scenes/test.unity
+    guid: 2c65d81f248ccbd44a791e18b8127d56
+  - enabled: 1
+    path: Assets/Scenes/Rainbow3.unity
+    guid: 9f4cce673154f2f41a72841a618e044d
+  m_configObjects:
+    Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: 262c193f9f749dd47aedbab343308d49, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: ad41feb1f97e52c4aa58fb3c2d58f693, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: f986b76f8bc7baa4baada963c1647fd9, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 9c02df83d54acee45aa4b81086c10468, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 62e574914f6dd3d408106d970369ba4e, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 120099b9f25b2864887bbe2b2fd875bd, type: 2}
