@@ -6,6 +6,7 @@ using Niantic.Lightship.AR.LocationAR;
 using Niantic.Lightship.AR.Loader;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEditor.FilePathAttribute;
 
 public class vpstest : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class vpstest : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _AnchorTrackingStateText;
+
+    private ARLocation[] _arLocation;
+     
 
     private void OnEnable()
     {
@@ -50,6 +54,9 @@ public class vpstest : MonoBehaviour
         if (_AnchorTrackingStateText != null)
         {
             _AnchorTrackingStateText.text = "Select a Location to start tracking";
+            //get the list of AR locations
+            _arLocation = _arLocationManager.ARLocations;
+            
         }
     }
 
@@ -75,4 +82,24 @@ public class vpstest : MonoBehaviour
             }
         }
     }
+
+    //This targets a particular location based on array number. This will allow me to start tracking different locations at key points in the game
+    public void locationChanger(int locNum)
+    {
+        _arLocationManager.SetARLocations(_arLocation[locNum]);
+        _arLocationManager.StartTracking();
+        _AnchorTrackingStateText.text = _arLocation[locNum].name;
+        print(_AnchorTrackingStateText.name);
+    }
+
+    //stop the current tracking so that a new location can be  tracked. It works but gives me an error message. Not sure why.
+    public void resetTracking()
+    {
+        _arLocationManager.StopTracking();
+       
+        _AnchorTrackingStateText.text = "Finding New Location";
+
+    }
+
+
 }

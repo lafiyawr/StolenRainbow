@@ -25,13 +25,13 @@ public class bwFade : MonoBehaviour
     void Update()
     {
       
-      // bwgrading.saturation.value = -50f;
-
+      
+        // this trigger the post processing color saturation to fade to black and white after a certain duration. Will eventually be triggered after an animation sequence
         if (timeElapsed < lerpDuration)
         {
             bwgrading.saturation.value = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;
-            print(timeElapsed);
+          //  print(timeElapsed);
         } else
         {
             return;

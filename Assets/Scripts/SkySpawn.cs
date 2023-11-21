@@ -71,7 +71,8 @@ public class SkySpawn : MonoBehaviour
             {
             var pos = Input.touches[0].position;
 #endif
-
+            // currently not being used, but this will instantiate an object when and where someones touches the sky. I wanted to make sure that the rainbow would show up in a part of the 
+            //sky that's most visible. If there's a better way to detect that, please let me know. :)
             if (pos.x > 0 && pos.x < Screen.width)
                 if (pos.y > 0 && pos.y < Screen.height)
                 {
