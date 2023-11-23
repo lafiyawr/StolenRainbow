@@ -5,6 +5,8 @@ using Niantic.Lightship.AR.Semantics;
 using UnityEngine.XR.ARFoundation;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.Playables;
 
 public class SkySpawn : MonoBehaviour
 {
@@ -14,7 +16,11 @@ public class SkySpawn : MonoBehaviour
     public RawImage _image;
     public Material _material;
     public GameObject cube;
-    public float zpos = 0f;
+    public float distance = 0f;
+    public bool spawnRainbow = false;
+    public GameObject rainbow;
+    [SerializeField]
+    private PlayableDirector _playableDirector;
 
     private string _channel = "sky";
     void OnEnable()
@@ -26,6 +32,8 @@ public class SkySpawn : MonoBehaviour
     {
         _cameraMan.frameReceived -= OnCameraFrameUpdate;
     }
+
+  
 
 
     private void OnCameraFrameUpdate(ARCameraFrameEventArgs args)
@@ -77,17 +85,24 @@ public class SkySpawn : MonoBehaviour
                 if (pos.y > 0 && pos.y < Screen.height)
                 {
                     _timer += Time.deltaTime;
-                    var Camerapos = Camera.main.transform.position;
-                    var newPos = new Vector3(Camerapos.x, Camerapos.y, zpos);
+                   
+                    var newPos = Camera.main.transform.TransformPoint(Vector3.forward * distance);
+                    var newRot = Camera.main.transform.rotation;
                     if (_timer > 0.05f)
                     {
                         var list = _semanticMan.GetChannelNamesAt((int)pos.x, (int)pos.y);
 
-                        if (list.Count > 0 && list[0] == _channel)
+                        if (list.Count > 0 && list[0] == _channel && !spawnRainbow)
                         {
-
+                            _playableDirector.Play();
                             _text.text = "sky!";
-                            Instantiate(cube, newPos, Quaternion.identity);
+                          // Instantiate(cube, newPos, newRot);
+                          rainbow.transform.position = newPos;
+                            rainbow.transform.rotation = newRot;
+                            rainbow.SetActive(true);
+                                               
+
+                            spawnRainbow = true;
 
                         }
                         else
